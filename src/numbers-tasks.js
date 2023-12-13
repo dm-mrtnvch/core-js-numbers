@@ -50,7 +50,8 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1 + value2) / 2;
+  const average = (value1 + value2) / 2;
+  return average === Infinity ? Number.MAX_VALUE : average;
 }
 
 /**
@@ -69,7 +70,7 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 /**
@@ -155,7 +156,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(a, b, c) {
-  Math.sqrt(a * a + b * b + c * c);
+  return Math.sqrt(a * a + b * b + c * c);
 }
 
 /**
@@ -232,7 +233,7 @@ function toNumber(value, def) {
  *   0  => 0
  */
 function getCube(num) {
-  return num * 3;
+  return num ** 3;
 }
 
 /**
@@ -340,7 +341,7 @@ function numberToStringInBase(/* number, base */) {
  * 12345, 2    => '1.23e+4'
  */
 function toExponential(number, fractionDigits) {
-  throw number.toExponential(fractionDigits);
+  return Number.parseFloat(number).toExponential(fractionDigits);
 }
 
 /**
@@ -385,7 +386,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return Number(number);
+  return number.valueOf();
 }
 
 /**
@@ -433,7 +434,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return parseFloat(str);
+  return Number.parseFloat(str);
 }
 
 /**
@@ -451,7 +452,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  return parseInt(str, base);
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -466,7 +467,7 @@ function getIntegerOnString(str, base) {
  * 2 ** 53  => false
  */
 function isSafeInteger(number) {
-  Number.isSafeInteger(number);
+  return Number.isSafeInteger(number);
 }
 
 /**
@@ -540,7 +541,8 @@ function getIntegerPartNumber(/* number */) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  const sumOfThee = x1 + x2 + x3;
+  return parseFloat(sumOfThee.toFixed(1));
 }
 
 /**
@@ -556,7 +558,7 @@ function getSumOfNumbers(x1, x2, x3) {
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
-  Math.max(firstNumber, secondNumber);
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
@@ -586,7 +588,7 @@ function getRandomInteger(/* min, max */) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return Math.sqrt(a * a + b * b);
+  return Math.hypot(a, b);
 }
 
 /**
